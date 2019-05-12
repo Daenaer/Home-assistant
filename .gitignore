@@ -4,11 +4,16 @@
 
 # You can whitelist files/folders with !, these will not be ignored.
 !*.yaml
-!.gitignore
+.gitignore
 !*.md
 sabnzbd.conf
+partymode_music.sh
+sleepmode_music.sh
+stop.sh
+stopsleep.sh
 
 # Ignore folders.
+!config
 .storage
 .cloud
 .google.token
