@@ -1,0 +1,12 @@
+alias: "Media player Stopped"
+initial_state: 'on'
+trigger:
+  platform: state
+  entity_id: media_player.baldr
+  to: 'idle'
+  for:
+    minutes: 5
+action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.versterker

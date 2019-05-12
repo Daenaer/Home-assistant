@@ -1,0 +1,11 @@
+alias: turn off TV slaapkamer
+initial_state: 'on'
+trigger:
+  platform: state
+  entity_id: media_player.freya
+  to: 'off'
+  
+action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.tv_slaapkamer

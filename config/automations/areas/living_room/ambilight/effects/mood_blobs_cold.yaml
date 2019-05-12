@@ -1,0 +1,9 @@
+alias: "Mood Blobs Cold"
+hide_entity: True
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id: input_select.hyperion_effect
+    to: "Mood Blobs Cold"
+action:
+  service: shell_command.h_mood_blobs_cold

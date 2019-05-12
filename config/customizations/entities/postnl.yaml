@@ -1,0 +1,10 @@
+sensor.postnl:
+  icon: mdi:package-variant
+  
+sensor.deliveries_today:
+  friendly_name: Pakketten bezorgd
+  icon: mdi:package-variant
+
+sensor.packages_in_transit:
+  friendly_name: Pakketten onderweg
+  icon: mdi:truck-delivery 

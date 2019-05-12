@@ -1,0 +1,1 @@
+curl --header 'Content-Type: application/json' --data-binary '{ "jsonrpc":"2.0","id":"1","method":"Player.Open","params":{"item":{"file":"smb://CMSTORMTROOPER/D/KODI Media/TV Shows and Movies/Movies/Ambilight Test (2015)/Ambilight Test.mp4"}}}' 'http://192.168.1.125:80/jsonrpc'

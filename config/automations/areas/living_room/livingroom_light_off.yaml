@@ -1,0 +1,10 @@
+alias: "Woonkamer Lights Off"
+initial_state: 'on'
+trigger:
+  - platform: template
+    value_template: "{% if states.sensor.sunlight.state | float > 10 %} true {% endif %}"
+
+action:
+  - service: light.turn_off
+    data:
+      entity_id: light.woonkamer

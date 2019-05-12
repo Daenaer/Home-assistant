@@ -1,0 +1,4 @@
+platform: ovapi
+name: Bushalte_eikenlaan
+stop_code: !secret ovapi_stop_code
+route_code: !secret ovapi_route_code

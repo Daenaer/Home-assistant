@@ -1,0 +1,5 @@
+device_tracker.thor:
+  hidden: true
+sensor.thor:
+  icon: mdi:nas
+  #entity_picture: /local/nas.png

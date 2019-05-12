@@ -1,0 +1,79 @@
+---
+id: downstairs
+title: Downstairs
+icon: mdi:sofa
+popup_cards:
+  sensor.living_room_temperature:
+    title: Living Room
+    card:
+      type: thermostat
+      entity: climate.living_room
+cards:
+  - !include ../cards/compact_custom_header.yaml
+  - type: vertical-stack
+    cards:
+      - type: entities
+        title: Lights
+        entities:
+          - type: section
+            label: Living Room
+          - type: custom:slider-entity-row
+            name: Window
+            entity: light.living_room_window
+            toggle: true
+          - type: custom:slider-entity-row
+            name: Bar
+            entity: light.living_room_bar
+            toggle: true
+          - type: custom:slider-entity-row
+            name: Television
+            entity: light.living_room_television
+            toggle: true
+          - type: custom:slider-entity-row
+            name: Spotlight
+            entity: light.living_room_spotlight
+            toggle: true
+          - type: section
+            label: Kitchen
+          - type: custom:slider-entity-row
+            name: Ceiling
+            entity: light.kitchen_ceiling
+            toggle: true
+          - name: Cupboard
+            entity: light.kitchen_cupboard
+          - type: section
+            label: Office
+          - type: custom:slider-entity-row
+            name: Window
+            entity: light.office_window
+            toggle: true
+          - name: Desk
+            entity: light.office_desk
+
+  - type: custom:mini-media-player
+    entity: media_player.living_room_shield
+    artwork: cover
+    source: icon
+  - type: custom:mini-media-player
+    entity: media_player.living_room_shield_android
+    artwork: cover
+    source: icon
+
+  - type: custom:mini-graph-card
+    name: Temperature
+    entities: sensor.living_room_temperature
+    location_icon: left
+    location_state: center
+    show:
+      fill: false
+      extrema: true
+    height: 75
+    animate: true
+    hour24: true
+    line_color: var(--primary-color)
+    line_color_above:
+      - value: 21
+        color: red
+    line_color_below:
+      - value: 15
+        color: white

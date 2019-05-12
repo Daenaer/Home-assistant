@@ -1,0 +1,6 @@
+name: Bank Lezen
+entities:
+  light.bank:
+    state: on
+    brightness: 254
+    color_temp: 343

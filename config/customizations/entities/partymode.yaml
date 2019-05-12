@@ -1,0 +1,5 @@
+switch.partymode:
+  friendly_name: Muziek
+  icon: mdi:kodi
+switch.kodi_party_mode:
+  hidden: true

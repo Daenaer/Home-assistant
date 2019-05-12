@@ -1,0 +1,19 @@
+alias: "Media player playing Video"
+initial_state: 'on'
+trigger:
+  platform: state
+  entity_id: media_player.baldr
+  to: 'playing'
+condition:
+  - condition: or
+    conditions:
+      - condition: template
+        value_template: "{{ is_state_attr('media_player.baldr', 'media_content_type', 'tvshow') }}"
+      - condition: template
+        value_template: "{{ is_state_attr('media_player.baldr', 'media_content_type', 'movies') }}"
+action:
+  - service: shell_command.h_hyperion_on
+  - service: mqtt.publish
+    data:
+      topic: milight/0x2294/rgb_cct/1
+      payload: "{'command':'night_mode'}"

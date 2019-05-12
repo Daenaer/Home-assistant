@@ -1,0 +1,6 @@
+device_tracker.freya:
+  hidden: true
+sensor.freya:
+  icon: mdi:kodi
+switch.freya:
+  icon: mdi:power

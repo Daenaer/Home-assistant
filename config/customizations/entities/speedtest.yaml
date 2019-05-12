@@ -1,0 +1,9 @@
+sensor.speedtest_download:
+  icon: mdi:download
+  friendly_name: Download
+sensor.speedtest_upload:
+  icon: mdi:upload
+  friendly_name: Upload
+sensor.speedtest_ping:
+  icon: mdi:timer
+  friendly_name: Ping 

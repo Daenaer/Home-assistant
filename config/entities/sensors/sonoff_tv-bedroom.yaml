@@ -1,0 +1,4 @@
+platform: mqtt
+name: "Sonoff TVSlaapkamer Firmware"
+state_topic: "stat/TV/STATUS2"
+value_template: '{{ value_json.StatusFWR.Version }}'

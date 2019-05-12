@@ -1,0 +1,10 @@
+#switch.pc_monitors:
+#  icon: mdi:monitor
+#  friendly_name: Monitors
+#switch.pc_sound:
+#  icon: mdi:volume-off
+#  friendly_name: Mute
+#input_number.pc_volume:
+#  icon: mdi:volume-high
+switch.desktop_odin:
+  icon: mdi:desktop-tower 

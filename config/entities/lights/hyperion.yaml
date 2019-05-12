@@ -1,0 +1,4 @@
+platform: hyperion
+name: Ambilight
+host: 192.168.178.200
+default_color: [255,150,0]

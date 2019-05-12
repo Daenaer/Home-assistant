@@ -1,0 +1,20 @@
+alias: "Media player stopping Video"
+initial_state: 'on'
+trigger:
+  platform: state
+  entity_id: media_player.baldr
+  to: 'idle'
+condition:
+  - condition: numeric_state
+    entity_id: sensor.clouds
+    below: 1
+action:
+  - service: light.turn_off
+    data:
+      entity_id: light.ambilight
+  - service: light.turn_on
+    data:
+      entity_id: light.ambilight
+  - service: light.turn_on
+    data:
+      entity_id: light.milight_spot

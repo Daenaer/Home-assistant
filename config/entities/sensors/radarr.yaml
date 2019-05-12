@@ -1,0 +1,12 @@
+platform: radarr
+api_key: !secret radarr_api_key
+host: !secret radarr_url
+port: 7878
+monitored_conditions:
+  - 'movies'
+  - 'upcoming'
+  # - 'wanted'
+  # - 'queue'
+  - 'commands'
+  - 'diskspace'
+  - 'status' 

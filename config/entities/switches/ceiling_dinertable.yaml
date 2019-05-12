@@ -1,0 +1,11 @@
+platform: mqtt
+name: "Eettafel"
+state_topic: "stat/eettafel/POWER"
+command_topic: "cmnd/eettafel/POWER"
+availability_topic: "tele/eettafel/LWT"
+payload_on: "ON"
+payload_off: "OFF"
+payload_available: "Online"
+payload_not_available: "Offline"
+optimistic: false
+retain: false

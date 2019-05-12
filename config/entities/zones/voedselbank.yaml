@@ -1,0 +1,9 @@
+---
+#
+# Defines the Voedselbank Zone
+#
+# https://www.home-assistant.io/components/zone/
+#
+name: Voedselbank
+latitude: !secret voedselbank_lat
+longitude: !secret voedselbank_long

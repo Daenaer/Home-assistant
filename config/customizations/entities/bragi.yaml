@@ -1,0 +1,4 @@
+device_tracker.bragi:
+  hidden: true
+sensor.bragi:
+  entity_picture: /local/nas.png

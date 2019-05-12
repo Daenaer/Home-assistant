@@ -1,0 +1,6 @@
+name: Bank energie
+entities:
+  light.bank:
+    state: on
+    brightness: 50
+    color_temp: 343 

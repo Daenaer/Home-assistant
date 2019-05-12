@@ -1,0 +1,13 @@
+# If no one has been home for 24 hours, automatically
+# enable vacation mode.
+alias: automatic vacation mode
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id: group.tracked_people
+    to: not_home
+    for:
+      hours: 24
+action:
+  - service: switch.turn_on
+    entity_id: switch.vacation

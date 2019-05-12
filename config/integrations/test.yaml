@@ -1,0 +1,9 @@
+sensor:
+  #- platform: mqtt
+    #name: pioneer song
+    #state_topic: "Pioneer/WebRadioSong"
+ 
+  #- platform: ovapi
+    #name: Bushalte_eikenlaan
+    #stop_code: 'rozeik'
+    #route_code: '53470110'

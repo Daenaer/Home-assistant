@@ -1,0 +1,4 @@
+milight:
+  title: Milight
+  icon: mdi:ceiling-light
+  url: !secret panel_iframe_tasmoadmin_url

@@ -1,0 +1,39 @@
+alias: Sleeping Guests
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id: switch.sleeping
+    to: 'on'
+#  - platform: mqtt
+#    topic: milight/updates/0x2294/rgb_cct/+
+condition:
+  - condition: state
+    entity_id: switch.guests
+    state: 'on'
+#  - condition: state
+#    entity_id: binary_sensor.any_door_open
+#    state: 'off'
+action:
+  - service: shell_command.tasker_sleep
+    data:
+      key: !secret tasker_key
+      sender: !secret tasker_sender
+      status: "ON"
+      guests: "ON"
+  - service: mqtt.publish
+    data:
+      topic: milight/0x2294/rgb_cct/1
+      payload: "{'command':'night_mode'}"
+  - service: light.turn_off
+    data:
+      entity_id: light.ambilight
+  - service: light.turn_off
+    data:
+      entity_id: light.ambilight
+  - delay: 0:10
+  - service: light.turn_off
+    data:
+      entity_id: light.milight_spot
+  - service: light.turn_off
+    data:
+      entity_id: light.milight_bank

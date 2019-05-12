@@ -1,0 +1,4 @@
+platform: caldav
+username: !secret caluser
+password: !secret calpass
+url: https://box.openmailbox.nl/cloud/remote.php/dav/

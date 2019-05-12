@@ -1,0 +1,13 @@
+alias: "ambilight Off"
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id: light.woonkamer
+    to: 'off'
+  - platform: mqtt
+    topic: 'milight/updates/0x2294/rgb_cct/0'
+    payload: '{"state":"OFF"}'
+action:
+  - service: light.turn_off
+    data:
+      entity_id: light.ambilight 

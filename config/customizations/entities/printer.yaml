@@ -1,0 +1,4 @@
+device_tracker.hpprinter:
+  hidden: true
+sensor.hpprinter:
+  icon: mdi:printer 

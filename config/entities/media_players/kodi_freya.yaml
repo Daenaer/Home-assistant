@@ -1,0 +1,11 @@
+platform: kodi
+name: Freya
+host: !secret freya_ip_address
+port: 8080
+username: !secret kodi_user
+password: !secret kodi_pass
+turn_off_action:
+  service: media_player.kodi_call_method
+  data:
+    entity_id: media_player.freya
+    method: System.Suspend

@@ -1,0 +1,46 @@
+  automation.cinema_brighten_lights:
+    hidden: true
+  automation.cinema_dim_lights:
+    hidden: true
+  automation.color_traces:
+    hidden: true
+  automation.hyperion_off:
+    hidden: true
+  automation.knight_rider:
+    hidden: true
+  automation.mood_blobs_blue:
+    hidden: true
+  automation.mood_blobs_cold:
+    hidden: true
+  automation.mood_blobs_full_color:
+    hidden: true
+  automation.mood_blobs_green:
+    hidden: true
+  automation.mood_blobs_red:
+    hidden: true
+  automation.mood_blobs_warm:
+    hidden: true
+  automation.police_lights_single:
+    hidden: true
+  automation.rainbow_mood:
+    hidden: true
+  automation.rainbow_swirl:
+    hidden: true
+  automation.random:
+    hidden: true
+  automation.running_dots:
+    hidden: true
+  automation.snake:
+    hidden: true
+  automation.sparks:
+    hidden: true
+  automation.sparks_color:
+    hidden: true
+  automation.strobe_blue:
+    hidden: true
+  automation.strobe_raspberry:
+    hidden: true
+  automation.strobe_white:
+    hidden: true
+  automation.system_shutdown:
+    hidden: true 

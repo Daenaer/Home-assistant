@@ -1,0 +1,11 @@
+alias: MiLight Forwarder
+initial_state: True
+trigger:
+  platform: mqtt
+  topic: milight/updates/2294/rgb_cct/+
+action:
+  - service: mqtt.publish
+    data_template:
+      topic: "milight/commands/2294/rgb_cct/{{ trigger.topic.split('/')[4] }}"
+      payload_template: >
+        {{ trigger.payload }} 

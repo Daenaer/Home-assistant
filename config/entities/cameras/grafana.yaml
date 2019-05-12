@@ -1,0 +1,5 @@
+platform: generic
+name: Grafana
+still_image_url: !secret grafana_url
+username: !secret grafana_user
+password: !secret grafana_pass

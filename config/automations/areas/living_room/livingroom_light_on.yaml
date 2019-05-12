@@ -1,0 +1,17 @@
+alias: "Woonkamer Lights On"
+initial_state: 'on'
+trigger:
+  - platform: template
+    value_template: "{% if states.sensor.sunlight.state | float < 2 %} true {% endif %}"
+      
+condition:
+  - condition: state
+    entity_id: switch.sleeping
+    state: 'off'
+  - condition: state
+    entity_id: group.tracked_people
+    state: home
+action:
+  - service: light.turn_on
+    data:
+      entity_id: light.woonkamer

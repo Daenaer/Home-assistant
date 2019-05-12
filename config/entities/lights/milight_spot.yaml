@@ -1,0 +1,12 @@
+name: "Milight Spot"
+command_topic: milight/0x2294/rgb_cct/1
+state_topic: milight/states/0x2294/rgb_cct/1
+#<<: &MILIGHT_PARAMS
+platform: mqtt
+schema: json
+color_temp: true
+rgb: true
+brightness: true
+effect: true
+effect_list: [   white_mode, night_mode, 0, 1, 2, 3, 4, 5, 6, 7, 8]
+

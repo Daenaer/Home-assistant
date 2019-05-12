@@ -1,0 +1,10 @@
+# Turn off vacation mode as soon as anyone gets home.
+alias: turn off vacation mode
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id: group.tracked_people
+    to: home
+action:
+  - service: switch.turn_off
+    entity_id: switch.vacation 

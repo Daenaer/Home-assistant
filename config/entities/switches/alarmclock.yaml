@@ -1,0 +1,6 @@
+platform: mqtt
+name: "Alarm Clock"
+state_topic: "home/alarm/state"
+command_topic: "home/alarm/set"
+payload_on: "ON"
+payload_off: "OFF"

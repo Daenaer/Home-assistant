@@ -1,0 +1,10 @@
+alias: "Eettafel off"
+initial_state: 'off'
+trigger:
+  platform: state
+  entity_id: sensor.eettafel
+  to: 'Offline'
+action:
+  service: light.turn_off
+  data:
+    entity_id: light.eettafel 

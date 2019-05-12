@@ -1,0 +1,8 @@
+# Geef de sonoffs de opdracht om upgrade uit te voeren:
+sonoffs_upgrade_fw:
+  alias: "Upgrade Sonoff FW"
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/sonoffs/upgrade"
+        payload: '1'

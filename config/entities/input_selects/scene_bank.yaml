@@ -1,0 +1,8 @@
+scene_bank:
+  name: Scene
+  options:
+    - '-'
+    - Avond
+    - Lezen
+    - Energie
+  initial: '-'

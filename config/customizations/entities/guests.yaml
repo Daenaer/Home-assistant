@@ -1,0 +1,5 @@
+switch.guests:
+  icon: mdi:human-male-female
+  friendly_name: "Gasten"
+  #emulated_hue_hidden: false
+  #emulated_hue_name: Guest Mode 

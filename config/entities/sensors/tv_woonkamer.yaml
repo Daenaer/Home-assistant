@@ -1,0 +1,3 @@
+platform: mqtt
+name: "tv"
+state_topic: "home/woonkamer/output/tv"

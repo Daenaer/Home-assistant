@@ -1,0 +1,4 @@
+device_tracker.baldr:
+  hidden: true
+sensor.baldr:
+  icon: mdi:kodi

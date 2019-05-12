@@ -1,0 +1,5 @@
+switch.sleeping:
+  icon: mdi:sleep
+  friendly_name: "Slapen"
+  #emulated_hue_hidden: false
+  #emulated_hue_name: Sleep Mode 

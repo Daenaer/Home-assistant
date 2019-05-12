@@ -1,0 +1,6 @@
+platform: mqtt
+state_topic: "phone/lgcoca"
+name: "Light level"
+unit_of_measurement: "lx"
+value_template: '{{ value_json.lux }}'
+device_class: illuminance 

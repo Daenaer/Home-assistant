@@ -1,0 +1,96 @@
+platform: template
+sensors:
+  bragi:
+    friendly_name: "Bragi"
+    value_template: >-
+      {% if is_state('device_tracker.bragi', 'home') %}
+        Online
+      {% else %}
+        Offline
+      {% endif %}
+  thor:
+    friendly_name: "Thor"
+    value_template: >-
+      {% if is_state('device_tracker.thor', 'home') %}
+        Online
+      {% else %}
+        Offline
+      {% endif %}
+  tplink:
+    friendly_name: "TP-Link"
+    value_template: >-
+      {% if is_state('device_tracker.tplink', 'home') %}
+        Online
+      {% else %}
+        Offline
+      {% endif %}
+  odin:
+    friendly_name: "Odin"
+    value_template: >-
+      {% if is_state('device_tracker.odin', 'home') %}
+        Online
+      {% else %}
+        Offline
+      {% endif %}
+  #fritz_netmonitor:
+  #  friendly_name: "Fritz.box"
+  #  value_template: >-
+  #    {% if is_state('sensor.fritz_netmonitor', 'online') %}
+  #      Online
+  #    {% else %}
+  #      Offline
+  #    {% endif %}
+  fritzrepeater:
+    friendly_name: "Fritz.repeater"
+    value_template: >-
+      {% if is_state('device_tracker.fritzrepeater', 'home') %}
+        Online
+      {% else %}
+        Offline
+      {% endif %}
+  wii:
+    friendly_name: "Wii"
+    value_template: >-
+      {% if is_state('device_tracker.wii', 'home') %}
+        Online
+      {% else %}
+        Offline
+      {% endif %}
+  hpprinter:
+    friendly_name: "HP Printer"
+    value_template: >-
+      {% if is_state('device_tracker.hpprinter', 'home') %}
+        Online
+      {% else %}
+        Offline
+      {% endif %}
+  milight:
+    friendly_name: "MI Light MQTT hub"
+    value_template: >-
+      {% if is_state('device_tracker.milight', 'home') %}
+        Online
+      {% else %}
+        Offline
+      {% endif %}
+  tvslaapkamer:
+    friendly_name: "TV Slaapkamer"
+    value_template: >-
+      {% if is_state('device_tracker.TV7833', 'home') %}
+        Online
+      {% else %}
+        Offline
+      {% endif %}
+  eettafel:
+    friendly_name: "Eettafel"
+    value_template: >-
+      {% if is_state('device_tracker.eettafel6864', 'home') %}
+        Online
+      {% else %}
+        Offline
+      {% endif %}
+  baldr:
+    friendly_name: Kodi (Woonkamer)
+    value_template: '{{ states("media_player.baldr") }}'
+  freya:
+    friendly_name: Kodi (Slaapkamer)
+    value_template: '{{ states("media_player.freya") }}' 

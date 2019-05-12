@@ -1,0 +1,9 @@
+id: sonoff_update_fws
+alias: 'Query Sonoffs FW'
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: time
+    at: '03:00:00'
+action:
+  service: script.sonoffs_query_fw 

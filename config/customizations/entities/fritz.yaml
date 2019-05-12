@@ -1,0 +1,9 @@
+device_tracker.fritzbox:
+  hidden: true
+sensor.fritz_netmonitor:
+  entity_picture: /local/fritz.jpg
+  friendly_name: Fritz.box
+device_tracker.fritzrepeater:
+  hidden: true
+sensor.fritzrepeater:
+  entity_picture: /local/fritzwlan.png

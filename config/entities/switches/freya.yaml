@@ -1,0 +1,4 @@
+platform: wake_on_lan
+mac_address: !secret freya_mac_address
+name: 'Freya'
+host: !secret freya_ip_address

@@ -1,0 +1,4 @@
+device_tracker.tplink:
+  hidden: true
+#sensor.tplink:
+  #entity_picture: /local/nas.png

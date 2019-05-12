@@ -1,0 +1,10 @@
+platform: mqtt
+name: "Versterker"
+state_topic: "home/woonkamer/output/amp"
+command_topic: "home/woonkamer/output/amp/set"
+# availability_topic: "home/livingroom/amp/available"
+payload_on: "ON"
+payload_off: "OFF"
+optimistic: false
+qos: 0
+retain: true

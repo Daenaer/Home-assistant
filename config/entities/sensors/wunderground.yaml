@@ -1,0 +1,30 @@
+platform: wunderground
+api_key: !secret wunderground_api
+lang: NL
+monitored_conditions:
+  - weather
+  - alerts
+  - dewpoint_c
+  - feelslike_c
+  - location
+  - observation_time
+  - precip_1hr_metric
+  - precip_today_metric
+  - pressure_mb
+  - pressure_trend
+  - relative_humidity
+  - station_id
+  - solarradiation
+  - temp_c
+  - UV
+  - visibility_km
+  - weather_1d_metric
+  - weather_1n_metric
+  - weather_2d_metric
+  - weather_2n_metric
+  - weather_3d_metric
+  - weather_3n_metric
+  - wind_degrees
+  - wind_dir
+  - wind_gust_kph
+  - wind_kph 

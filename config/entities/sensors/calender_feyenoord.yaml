@@ -1,0 +1,11 @@
+platform: template
+sensors:
+  match_feyenoord:
+    friendly_name: 'Feyenoord'
+    value_template: "{{ states.calendar.feyenoord.attributes.message }}"
+  start_match:
+    friendly_name: 'Start'
+    value_template: "{{ states.calendar.feyenoord.attributes.starttime }}"
+  stop_match:
+    friendly_name: 'stop'
+    value_template: "{{ states.calendar.feyenoord.attributes.endtime }}" 

@@ -1,0 +1,8 @@
+platform: template
+sensors:
+  sunlight:
+    friendly_name: Zonlicht
+    unit_of_measurement: "lx"
+    value_template: '{{ "%.2f"|format((states.sun.sun.attributes.elevation/7) * (states.sun.sun.attributes.elevation|abs/7) + (1-(states.sensor.dark_sky_cloud_coverage.state|int/100))) }}'
+    device_class: illuminance
+

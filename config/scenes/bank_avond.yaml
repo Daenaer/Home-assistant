@@ -1,0 +1,7 @@
+- name: Bank Avond
+  entities:
+    light.bank:
+      state: on
+      brightness: 128
+      color_temp: 391
+

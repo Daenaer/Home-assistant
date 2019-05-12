@@ -1,0 +1,837 @@
+title: Asgard
+# Include external resources
+resources:
+ # - url: /local/custom_ui/weather-card/dark-sky-weather-card.js?v=4
+ #   type: js
+  - url: /local/custom_ui/card-tools.js
+    type: js
+  - url: /local/custom_ui/card-modder.js?v=fadc03
+    type: js
+  - url: /local/custom_ui/weather-card.js
+    type: module
+  - url: /local/custom_ui/dual-guage-card.js
+    type: js
+  - url: /local/my-custom-card.js
+    type: js
+  #- url: /local/plan-coordinates.js
+  # type: js
+  - url: /local/my-webfont.css
+    type: css
+  - url: /local/mini-media-player-bundle.js?v=0.9.8
+    type: module
+  - url: /local/mini-graph-card-bundle.js?v=0.1.0
+    type: module
+  - url: /local/button-card.js
+    type: module
+    
+# Optional background for all views. Check https://developer.mozilla.org/en-US/docs/Web/CSS/background for more examples.
+background: center / cover no-repeat url("/background.png") fixed
+# Exclude entities from "Unused entities" view
+excluded_entities:
+  #- weblink.router
+views:
+  - title: Overview
+    icon: mdi:home
+    # Optional unique id for direct access /lovelace/${id}
+    id: overview
+    # Optional background (overwrites the global background).
+    # background: radial-gradient(crimson, skyblue)
+    # Each view can have a different theme applied. Theme should be defined in the frontend.
+    theme: dark-mode
+    # The cards to show on this view.
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: picture-elements
+                  image: /local/zanbee.jpg
+                  elements:
+                    - type: state-label
+                      entity: device_tracker.michel_oneplus6t
+                      prefix: 'Michel -- '
+                      style: {color: white, left: 30%, top: 90%}
+                    - type: state-icon
+                      entity: sensor.battery_michel
+                      tap_action: more_info
+                      style: {color: white, left: 73%, top: 90%}
+                    - type: state-label
+                      entity: sensor.battery_michel
+                      tap_action: more_info
+                      style: {color: white, left: 87%, top: 91%}
+                style:                 
+                  border-radius: 20px
+                  border: solid 1px rgba(100,100,100,0.3)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+                  overflow: hidden
+              - type: custom:card-modder
+                card:
+                  type: picture-elements
+                  image: /local/thonia.jpg
+                  elements:
+                    - type: state-label
+                      entity: device_tracker.thonia
+                      prefix: 'Thonia -- '
+                      style: {color: white, left: 30%, top: 90%}
+                style:                 
+                  border-radius: 20px
+                  border: solid 1px rgba(100,100,100,0.3)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+                  overflow: hidden
+              - type: custom:card-modder
+                card:
+                  type: picture-elements
+                  image: /local/panda.jpg
+                  elements:
+                    - type: state-label
+                      entity: device_tracker.zoe
+                      prefix: 'Zoë -- '
+                      style: {color: white, left: 30%, top: 90%}
+                style:                 
+                  border-radius: 20px
+                  border: solid 1px rgba(100,100,100,0.3)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+                  overflow: hidden                    
+                
+          - type: custom:card-modder
+            card:            
+              type: picture-glance
+              entities:
+                - switch.vacation
+                - switch.guests
+              state_image:
+                "on": /local/vakantie.png
+                "off": /local/thuis.png
+              entity: switch.vacation 
+            style:                 
+              border-radius: 20px
+              border: solid 1px rgba(100,100,100,0.3)
+              box-shadow: 3px 3px rgba(0,0,0,0.4)
+              overflow: hidden
+
+          - type: custom:card-modder
+            card:   
+              type: weather-forecast
+              #entity_weather: weather.rozenburg
+              #entity_sun: sun.sun        
+              entity: weather.rozenburg
+              #entity: sensor.br_symbol_2
+              #entity: sensor.dark_sky_daily_summary
+            style:                 
+              border-radius: 20px
+              border: solid 1px rgba(100,100,100,0.3)
+              box-shadow: 3px 3px rgba(0,0,0,0.4)
+              overflow: hidden                
+      - id: 15586
+        type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+            - type: custom:card-modder
+              card:  
+                type: entity-button
+                entity:  switch.partymode
+                icon: mdi:kodi
+                tap_action:
+                  action: toggle
+              style:                 
+                border-radius: 20px
+                border: solid 1px rgba(100,100,100,0.3)
+                box-shadow: 3px 3px rgba(0,0,0,0.4)
+                overflow: hidden
+            - type: custom:card-modder
+              card:                  
+                type: entity-button
+                entity: switch.versterker
+                name: versterker
+                icon: mdi:amplifier
+                tap_action:
+                  action: toggle
+              style:                 
+                border-radius: 20px
+                border: solid 1px rgba(100,100,100,0.3)
+                box-shadow: 3px 3px rgba(0,0,0,0.4)
+                overflow: hidden                    
+          - type: horizontal-stack
+            cards:
+            - type: custom:card-modder
+              card: 
+                type: light
+                entity: light.woonkamer
+                name: Woonkamer
+              style:                 
+                border-radius: 130px
+                border: solid 1px rgba(100,100,100,0.3)
+                box-shadow: 3px 3px rgba(0,0,0,0.4)
+                overflow: hidden
+            - type: custom:card-modder
+              card: 
+                type: light
+                entity: light.ambilight
+                name: Ambilights
+              style:                 
+                border-radius: 130px
+                border: solid 1px rgba(100,100,100,0.3)
+                box-shadow: 3px 3px rgba(0,0,0,0.4)
+                overflow: hidden                
+      - id: aad90d9bc8404e3eb66b6b1f8aa75ed9  # Automatically created id
+        type: conditional
+        conditions:
+          - entity: sensor.packages_in_transit
+            state_not: '0'
+        card:
+          type: entities
+          entities:
+            #- sensor.postnl
+            - sensor.packages_in_transit
+            - sensor.deliveries_today
+      #- type: weather-forecast
+      #  entity: weather.dark_sky
+      - type: custom:card-modder
+        card:            
+          type: picture-elements
+          image: /local/backgrounds/alarmclock.png
+          elements:
+            - type: state-label
+              entity: sensor.time
+              style: {color: orange, left: 50%, top: 25%, font-size: 7vw}
+            - type: state-label
+              entity: sensor.alarm_clock_time
+              style: {color: orange, left: 50%, top: 60%, font-size: 4vw}
+            - type: state-icon
+              entity: switch.alarm_clock
+              tap_action:
+                action: toggle
+              style: {color: black, left: 25%, top: 65%}
+            - type: icon
+              icon: mdi:arrow-down-drop-circle
+              style: {color: orange, left: 38%, top: 80%, font-size: 4vw}
+              tap_action:
+                action: call-service
+                service: input_number.decrement
+                service_data:
+                  entity_id: input_number.alarm_clock_hour
+            - type: icon
+              icon: mdi:arrow-up-drop-circle
+              style: {color: orange, left: 45%, top: 80%, font-size: 4vw}
+              tap_action:
+                action: call-service
+                service: input_number.increment
+                service_data:
+                  entity_id: input_number.alarm_clock_hour
+            - type: icon
+              icon: mdi:arrow-down-drop-circle
+              style: {color: orange, left: 55%, top: 80%, font-size: 4vw}
+              tap_action:
+                action: call-service
+                service: input_number.decrement
+                service_data:
+                  entity_id: input_number.alarm_clock_minutes            
+            - type: icon
+              icon: mdi:arrow-up-drop-circle
+              style: {color: orange, left: 62%, top: 80%, font-size: 4vw}
+              tap_action:
+                action: call-service
+                service: input_number.increment
+                service_data:
+                  entity_id: input_number.alarm_clock_minutes            
+            - type: service-button
+              title: Slapen
+              service: switch.toggle
+              service_data:
+                entity_id: switch.sleeping
+              style: {color: white, left: 80%, top: 90%}
+            - type: service-button
+              title: Wekker
+              service: switch.toggle
+              service_data:
+                entity_id: switch.alarm_clock
+              style: {color: white, left: 20%, top: 90%}
+        style:                 
+          border-radius: 20px
+          border: solid 2px rgba(192,192,192,1)
+          box-shadow: 3px 3px rgba(0,0,0,0.4)
+          overflow: hidden
+      - type: custom:card-modder
+        card:            
+          type: picture-elements
+          image: /local/backgrounds/bus.png
+          elements:
+            - type: state-label
+              prefix: 'volgende bus naar Spijkenisse -- '
+              entity: sensor.bushalte_eikenlaan
+              style: {color: white, left: 30%, top: 90% }
+        style:                 
+          border-radius: 20px
+          border: solid 2px rgba(192,192,192,1)
+          box-shadow: 3px 3px rgba(0,0,0,0.4)
+          overflow: hidden
+
+        # The picture entity card will represent an entity with a picture
+     # - type: picture-entity
+     #   image: https://www.home-assistant.io/images/default-social.png
+     #   entity: light.bed_light
+  - icon: mdi:sofa
+    title: Woonkamer
+    cards:
+      - id: 733145456488
+        type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: light
+                  entity: light.milight_bank
+                  name: Muurlampen
+                style:                 
+                  border-radius: 20px
+                  border: solid 1px rgba(100,100,100,0.3)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+                  overflow: hidden
+              - type: custom:card-modder
+                card:
+                  type: light
+                  entity: light.milight_spot
+                  name: Staande spot
+                style:                 
+                  border-radius: 20px
+                  border: solid 1px rgba(100,100,100,0.3)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+                  overflow: hidden
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: light
+                  entity: light.eettafel
+                  name: Eettafel
+                style:                 
+                  border-radius: 20px
+                  border: solid 1px rgba(100,100,100,0.3)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+                  overflow: hidden
+              - type: custom:card-modder
+                card:
+                  type: light
+                  entity: light.ambilight
+                  name: Ambilights
+                style:                 
+                  border-radius: 20px
+                  border: solid 1px rgba(100,100,100,0.3)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+                  overflow: hidden
+          - type: custom:card-modder
+            card:
+              type: entities
+              title: Scenes
+              show_header_toggle: false
+              entities:
+                - input_select.scene_bank
+                - input_select.scene_spot
+            style:                 
+              border-radius: 20px
+              border: solid 1px rgba(100,100,100,0.3)
+              box-shadow: 3px 3px rgba(0,0,0,0.4)
+              overflow: hidden
+
+      - type: custom:card-modder
+        card:
+          type: custom:mini-media-player
+          entity: media_player.baldr
+          icon: mdi:television
+          artwork: cover
+        style:                 
+          border-radius: 20px
+          border: solid 1px rgba(100,100,100,0.3)
+          box-shadow: 3px 3px rgba(0,0,0,0.4)
+          overflow: hidden
+                  
+      - id: 32debb73b3f843a182f5d671b757c0c1  # Automatically created id
+        type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  entity:  switch.desktop_odin
+                  tap_action:
+                    action: toggle
+                style:                 
+                  border-radius: 20px
+                  border: solid 1px rgba(100,100,100,0.3)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+                  overflow: hidden
+              - type: custom:card-modder
+                card:                
+                  type: entity-button
+                  entity:  switch.versterker
+                  tap_action:
+                    action: toggle
+                style:                 
+                  border-radius: 20px
+                  border: solid 1px rgba(100,100,100,0.3)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+                  overflow: hidden
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  entity:  switch.partymode
+                  tap_action:
+                    action: toggle
+                style:                 
+                  border-radius: 20px
+                  border: solid 1px rgba(100,100,100,0.3)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+                  overflow: hidden
+          - type: horizontal-stack     
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: sensor
+                  entity: sensor.tv
+                  name: Televisie
+                style:                 
+                  border-radius: 20px
+                  border: solid 1px rgba(100,100,100,0.3)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+                  overflow: hidden
+              - type: custom:card-modder
+                card:
+                  type: sensor
+                  entity: sensor.baldr
+                  name: MediaCenter
+                style:                 
+                  border-radius: 20px
+                  border: solid 1px rgba(100,100,100,0.3)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+                  overflow: hidden
+  - icon: mdi:hotel
+    title: Slaapkamer
+    cards:
+      - id: 2d1a08f287d04041b3703dccc0462ab7  # Automatically created id
+        type: vertical-stack
+        cards:
+          - type: custom:card-modder
+            card:
+              type: entities
+              title: Slaapkamer
+              show_header_toggle: false
+              entities:
+                - switch.sleeping
+                - media_player.freya
+                - switch.freya
+                - switch.tv_slaapkamer
+            style:                 
+              border-radius: 20px
+              border: solid 1px rgba(100,100,100,0.3)
+              box-shadow: 3px 3px rgba(0,0,0,0.4)
+              overflow: hidden
+      - type: custom:card-modder
+        card:            
+          type: picture-elements
+          image: /local/backgrounds/alarmclock.png
+          elements:
+            - type: state-label
+              entity: sensor.time
+              style: {color: orange, left: 50%, top: 25%, font-size: 7vw}
+            - type: state-label
+              entity: sensor.alarm_clock_time
+              style: {color: orange, left: 50%, top: 60%, font-size: 4vw}
+            - type: state-icon
+              entity: switch.alarm_clock
+              tap_action:
+                action: toggle
+              style: {color: black, left: 25%, top: 65%}
+            - type: icon
+              icon: mdi:arrow-down-drop-circle
+              style: {color: orange, left: 38%, top: 80%, font-size: 4vw}
+              tap_action:
+                action: call-service
+                service: input_number.decrement
+                service_data:
+                  entity_id: input_number.alarm_clock_hour
+            - type: icon
+              icon: mdi:arrow-up-drop-circle
+              style: {color: orange, left: 45%, top: 80%, font-size: 4vw}
+              tap_action:
+                action: call-service
+                service: input_number.increment
+                service_data:
+                  entity_id: input_number.alarm_clock_hour
+            - type: icon
+              icon: mdi:arrow-down-drop-circle
+              style: {color: orange, left: 55%, top: 80%, font-size: 4vw}
+              tap_action:
+                action: call-service
+                service: input_number.decrement
+                service_data:
+                  entity_id: input_number.alarm_clock_minutes            
+            - type: icon
+              icon: mdi:arrow-up-drop-circle
+              style: {color: orange, left: 62%, top: 80%, font-size: 4vw}
+              tap_action:
+                action: call-service
+                service: input_number.increment
+                service_data:
+                  entity_id: input_number.alarm_clock_minutes            
+            - type: service-button
+              title: Slapen
+              service: switch.toggle
+              service_data:
+                entity_id: switch.sleeping
+              style: {color: white, left: 80%, top: 90%}
+            - type: service-button
+              title: Wekker
+              service: switch.toggle
+              service_data:
+                entity_id: switch.alarm_clock
+              style: {color: white, left: 20%, top: 90%}
+        style:                 
+          border-radius: 20px
+          border: solid 2px rgba(192,192,192,1)
+          box-shadow: 3px 3px rgba(0,0,0,0.4)
+          overflow: hidden
+
+    # Specify a tab icon if you want the view tab to be an icon.
+  - icon: mdi:lightbulb-on
+    # Title of the view. Will be used as the tooltip for tab icon
+    title: Verlichting
+    id: verlichting
+    cards:
+      - id: 200faeb74c70472ab43bdf16b25bf6d4  # Automatically created id
+        type: glance
+        title: Woonkamer
+        show_state: false
+        entities:
+          - entity: light.ambilight
+            tap_action:
+              action: toggle
+          - entity: light.milight_bank
+            name: Bank
+            tap_action:
+              action: toggle
+          - entity: light.milight_spot
+            name: Spot
+            tap_action:
+              action: toggle
+          - entity: light.eettafel
+            name: Eettafel
+            tap_action:
+              action: toggle
+
+      - id: 8b32611f07cb4760b709ab79952c1f97  # Automatically created id
+        type: entities
+        title: Ambilight
+        show_header_toggle: false
+        entities:
+          - entity: light.ambilight
+            tap_action: toggle
+          - input_select.hyperion_effect
+      - id: 120b47dbe83b4ec6aec8284a558ec110  # Automatically created id
+        type: entities
+        title: Bank
+        show_header_toggle: false
+        entities:
+          - entity: light.milight_bank
+            name: Bank
+            tap_action: toggle
+          - input_select.scene_bank
+      - id: 108833a09754493aa4b3fb4114db6acd  # Automatically created id
+        type: entities
+        show_header_toggle: false
+        title: Spot
+        entities:
+          - entity: light.milight_spot
+            name: Spot
+            tap_action: toggle
+          - input_select.scene_spot
+
+
+          
+  - icon: mdi:weather-cloudy
+    title: Het weer
+    id: weer
+    cards:
+      - id: 3100b5c17b4e4a9a81ab210278dc392e  # Automatically created id
+        type: glance
+        title: Zon
+        entities:
+          - sun.sun
+          - sensor.period_of_day
+          - sensor.light_level
+          - sensor.season
+      - id: a2d8dd47d6bc43cfa7b01b9bb7c00747  # Automatically created id
+        type: vertical-stack
+        cards:
+         
+
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                name: Sun Elevation
+                entity: sensor.sun_elevation
+                line_color: '#f5cb43'
+                line_width: 4
+                icon: mdi:weather-sunset
+              - type: custom:mini-graph-card
+                name: Zonlicht
+                entity: sensor.sunlight
+                line_color: '#3498db'
+                line_width: 4
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                name: Bewolking
+                entity: sensor.clouds
+                line_color: '#f5cb43'
+                line_width: 4
+                icon: mdi:weather-partlycloudy
+              - type: custom:mini-graph-card
+                name: Chance of Rain
+                entity: sensor.dark_sky_precip_probability
+                line_color: '#3498db'
+                line_width: 4
+          - type: custom:weather-card
+            entity: weather.rozenburg
+            entity_sun: sun.sun        
+            #entity: weather.yweather
+
+      - id: 9fe848d3305d4785ba5cf13b87642afe  # Automatically created id
+        type: vertical-stack
+        cards:
+          - type: picture-entity
+            entity: camera.knmi_buienradar
+            show_state: false
+            show_name: false
+          - type: horizontal-stack
+            cards:
+              - type: picture-entity
+                entity: camera.knmi_verwachting_vandaag
+                name: Verwachting vandaag
+                show_state: false
+                show_name: false
+              - type: picture-entity
+                entity: camera.knmi_verwachting_komende_nacht
+                name: Verwachting vannacht
+                show_state: false
+                show_name: false
+              - type: picture-entity
+                entity: camera.knmi_verwachting_morgen
+                name: Verwachting morgen
+                show_state: false
+                show_name: false
+
+  - id: 3  # Automatically created id
+    icon: mdi:audio-video
+    title: Media
+    cards:
+      - id: 72eb46355c2541fbbeabb5c2756e6806  # Automatically created id
+        type: entity-filter
+        show_empty: false
+        entities:
+          - media_player.baldr
+        state_filter:
+          - playing
+        card:
+          type: media-control
+          entity: media_player.baldr
+      - id: d314886f28fc4c27ab6e9a67327e6b67  # Automatically created id
+        type: entity-filter
+        show_empty: false
+        entities:
+          - media_player.freya
+        state_filter:
+          - playing
+        card:
+          type: media-control
+          entity: media_player.freya
+      - id: 343b18c44e13418f84d5fdbd1c03f06d  # Automatically created id
+        type: glance
+        title: MediaSpelers
+        entities:
+          - entity: media_player.baldr
+            icon: mdi:kodi
+            name: Baldr
+          - entity: media_player.freya
+            icon: mdi:kodi
+            name: Freya
+      - id: 5b08e1891b58407ba4f845cdda49fa9a  # Automatically created id
+        type: entities
+        title: Downloaders
+        show_header_toggle: false
+        entities:
+          - sensor.sabnzbd_status
+          - sensor.sabnzbd_speed
+          - sensor.sabnzbd_queue
+          - sensor.sabnzbd_left
+          - sensor.sabnzbd_disk
+          - sensor.sabnzbd_disk_free
+      - id: 680cfe500552422bafff66c634ac1ec1  # Automatically created id
+        type: entities
+        title: Series
+        show_header_toggle: false
+        entities:
+          - sensor.sonarr_queue
+          - sensor.sonarr_series
+          - sensor.sonarr_upcoming
+          - sensor.sonarr_wanted
+          - sensor.sonarr_disk_space
+          - sensor.sonarr_commands
+      - id: 680cfe500552422bafff66c634adg1ec1  # Automatically created id
+        type: entities
+        title: Films
+        show_header_toggle: false
+        entities:
+          - sensor.radarr_movies
+          - sensor.sonarr_upcoming
+          - sensor.radarr_disk_space
+          - sensor.radarr_commands
+  - id: 4  # Automatically created id
+    icon: mdi:docker
+    title: docker
+    cards:
+      - id: 3eeb8253361f4b8b93a4a3c425ce3d05  # Automatically created id
+        type: entities
+        title: Home-Automation
+        show_header_toggle: false
+        entities:
+          - switch.mqtt
+          - switch.tasmoadmin
+      - id: d7ee4254c2bc4bc595b558ea7756158f  # Automatically created id
+        type: entities
+        title: Downloaders
+        show_header_toggle: false
+        entities:
+          - switch.sabnzbd
+          - switch.transmission
+          - switch.spotweb
+          - switch.couchpotato
+          - switch.sonarr
+          - switch.headphones
+      - id: 9d530b85dc9f41ed83529decedb95a5b  # Automatically created id
+        type: entities
+        title: Databases
+        show_header_toggle: false
+        entities:
+          - switch.mariadb
+          - switch.phpmyadmin
+          - switch.influxdb
+          - switch.grafana
+        # Automatically created id
+      - type: entities
+        title: Documenten
+        show_header_toggle: false
+        entities:
+          - switch.mayan
+          - switch.database
+          - switch.broker
+          - switch.results
+  - id: 5  # Automatically created id
+    icon: mdi:gauge
+    title: Systems
+    cards:
+      - id: 378ca1fb868942a6ac457e037611e3f5  # Automatically created id
+        type: vertical-stack
+        cards:
+          - type: glance
+            title: Netwerk
+            entities:
+              - sensor.fritz_netmonitor
+              - sensor.fritzrepeater
+              - sensor.tplink
+              - sensor.thor
+              - sensor.bragi
+              - sensor.wii
+              - sensor.hpprinter
+              - sensor.milight
+          - type: glance
+            title: Computers
+            entities:
+              - sensor.odin
+              - device_tracker.parrot
+              - device_tracker.pczoe
+              - device_tracker.tabletzoe
+          - type: entities
+            title: Sonoffs
+            entities:
+              - sensor.sonoff_current_fw
+              - sensor.sonoff_tvslaapkamer_firmware
+              - sensor.sonoff_eettafel_firmware
+              - script.sonoffs_query_fw
+              - script.sonoffs_set_ota
+              - script.sonoffs_upgrade_fw
+      - id: c03255ab821e47ff83b537501f6a0033  # Automatically created id
+        type: entities
+        title: Pi-Hole
+        show_header_toggle: false
+        entities:
+          - switch.pihole
+          - sensor.pi_hole_ads_blocked_today
+          - sensor.pi_hole_ads_percentage_blocked_today
+          - sensor.pi_hole_dns_queries_today
+          - sensor.pi_hole_ads_blocked_today
+          - sensor.pi_hole_dns_queries_forwarded
+          - sensor.pi_hole_dns_unique_clients
+          - sensor.pi_hole_dns_unique_domains
+          - sensor.pi_hole_domains_blocked
+      - id: 7b4b84b727f04798a47d5bf3f64ddc92  # Automatically created id
+        type: entities
+        title: Speedtest
+        show_header_toggle: false
+        entities:
+          - sensor.speedtest_ping
+          - sensor.speedtest_download
+          - sensor.speedtest_upload
+#      - id: 8daf7e62252548de89c073ca2e31d8bf  # Automatically created id
+#        type: entities
+#        title: Have I Been Pawned
+#        show_header_toggle: false
+#        entities:
+#          - sensor.breaches_m_vrauwdeunt_openmailbox_nl
+#          - sensor.breaches_m_vrauwdeunt_openmailbox_org
+#          - sensor.breaches_zanbee_gmail_com
+#          - sensor.breaches_thoniarietdijk_hotmail_com
+  - id: 6  # Automatically created id
+    icon: mdi:home-assistant
+    cards:
+      - id: 565aa14b48e34fa0829d3f202813ea9f  # Automatically created id
+        type: markdown
+        title: Lovelace
+        content: >
+          Welcome to your **Lovelace UI**.
+      - type: entities
+        title: Test
+        entities:
+          - sensor.pioneer_song
+          - sensor.bushalte_eikenlaan
+          - sensor.tv
+      - id: b00162f73831402eb537a10dd52641cc  # Automatically created id
+        type: conditional
+        conditions:
+          - entity: sensor.packages_in_transit
+            state_not: '0'
+        card:
+          type: entities
+          entities:
+            - sensor.postnl
+            - sensor.packages_in_transit
+            - sensor.deliveries_today
+
+
+              
+              
+      - id: ad04d3aba13d4294b2c504fba2547379  # Automatically created id
+        type: conditional
+        conditions:
+          - entity: sensor.match_feyenoord
+            state_not: ' '
+        card:
+          type: entities
+          entities:
+            - sensor.match_feyenoord
+            - sensor.start_match
+            - sensor.stop_match

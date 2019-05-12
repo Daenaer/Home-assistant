@@ -1,0 +1,11 @@
+---
+#
+# Defines the Home Zone
+#
+# https://www.home-assistant.io/components/zone/
+#
+name: Werk
+latitude: !secret work_lat
+longitude: !secret work_long
+radius: 250
+icon: mdi:office-building

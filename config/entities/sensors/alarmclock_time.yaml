@@ -1,0 +1,4 @@
+platform: template
+sensors:
+  alarm_clock_time:
+    value_template: '{{ "%0.02d:%0.02d" | format(states("input_number.alarm_clock_hour") | int, states("input_number.alarm_clock_minutes") | int) }}'

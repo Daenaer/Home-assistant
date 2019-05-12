@@ -1,0 +1,21 @@
+alias: Bank Scenes
+id: "156743217"
+initial_state: 'on'
+trigger:
+  platform: state
+  entity_id: input_select.scene_bank
+action:
+  - service: scene.turn_on
+    data_template:
+      entity_id: >
+        {% if is_state("input_select.scene_bank", "Avond") %}
+          scene.bank_avond
+        {% elif is_state("input_select.scene_bank", "Lezen") %}
+          scene.bank_lezen
+        {% elif is_state("input_select.scene_bank", "Energie") %}
+          scene.bank_energie
+        {% endif %}
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.scene_bank
+      option: "-"

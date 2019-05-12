@@ -1,0 +1,5 @@
+device_tracker.wii:
+  hidden: true
+sensor.wii:
+  icon: mdi:wii
+  #entity_picture: /local/nas.png 

@@ -1,0 +1,15 @@
+alias: notify test
+initial_state: 'on'
+trigger: 
+  platform: mqtt
+  topic: home/notify/test
+  payload: 'ON'
+action:
+  - service: shell_command.tasker_notify
+    data:
+      key: !secret tasker_key
+      sender: !secret tasker_sender
+      title: "Deurbel"
+      message: "Er%20is%20iemand%20aan%20de%20deur"
+
+

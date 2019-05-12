@@ -1,0 +1,8 @@
+---
+# The onvif camera platform allows you to use an ONVIF camera in Home Assistant.
+#
+# https://www.home-assistant.io/components/onvif/
+#
+platform: generic
+still_image_url: https://cdn.knmi.nl/knmi/map/general/weather-map.gif?62809862ee43b59a9bc9bcda6b0288cd
+name: knmi_buienradar

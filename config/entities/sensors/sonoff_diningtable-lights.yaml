@@ -1,0 +1,4 @@
+platform: mqtt
+name: "Sonoff Eettafel Firmware"
+state_topic: "stat/eettafel/STATUS2"
+value_template: '{{ value_json.StatusFWR.Version }}'

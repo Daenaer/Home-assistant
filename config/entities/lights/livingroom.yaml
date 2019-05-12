@@ -1,0 +1,5 @@
+platform: group
+name: Woonkamer
+entities:
+  - light.milight_bank
+  - light.milight_spot

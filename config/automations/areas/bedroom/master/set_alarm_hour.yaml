@@ -1,0 +1,11 @@
+# set the hour of the alarm clock
+alias: set alarmclock hour
+initial_state: 'on'
+trigger:
+  platform: mqtt
+  topic: home/alarm/time/hour
+action:
+  - service: input_number.set_value
+    data_template:
+      entity_id: input_number.alarm_clock_hour
+      value: '{{ trigger.payload}}'

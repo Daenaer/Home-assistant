@@ -1,0 +1,17 @@
+sensor.pi_hole_ads_blocked_today:
+  friendly_name: Ads geblokeerd
+sensor.pi_hole_dns_queries_today:
+  friendly_name: Verzoeken
+sensor.pi_hole_ads_percentage_blocked_today:
+  friendly_name: Percentage geblokeerd
+sensor.pi_hole_dns_queries_cached:
+  friendly_name: verzoeken gecached     
+sensor.pi_hole_dns_queries_forwarded:
+  friendly_name: Verzoeken doorgestuurd
+sensor.pi_hole_dns_unique_clients:
+  friendly_name: Unieke clienten
+sensor.pi_hole_dns_unique_domains:
+  friendly_name: Unieke domeinen
+switch.pi_hole:
+  friendly_name: Pi-Hole
+  entity_picture: /local/pihole.jpeg

@@ -1,0 +1,13 @@
+alias: message test
+initial_state: 'on'
+trigger: 
+  platform: mqtt
+  topic: home/message/test
+  payload: 'ON'
+action:
+  - service: shell_command.tasker_alarm
+    data:
+      key: !secret tasker_key
+      sender: !secret tasker_sender
+      title: "slapen"
+      status: "Off" 

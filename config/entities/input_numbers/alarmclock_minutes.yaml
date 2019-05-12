@@ -1,0 +1,6 @@
+alarm_clock_minutes:
+#name: "alarm clock minutes"
+  initial: 30
+  min: 0
+  max: 59
+  step: 1

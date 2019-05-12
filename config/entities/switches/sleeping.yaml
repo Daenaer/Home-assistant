@@ -1,0 +1,9 @@
+# Switch indicating sleeping.
+platform: mqtt
+name: "Sleeping"
+state_topic: "home/sleeping"
+command_topic: "home/sleeping"
+qos: 1
+payload_on: "ON"
+payload_off: "OFF"
+retain: true

@@ -1,0 +1,3 @@
+  tasker_alarm: 'curl -X GET https://autoremotejoaomgcd.appspot.com/sendmessage?key={{ key }}&sender={{ sender }}&message=Alarm=:=Status={{ status }},Time={{ states.sensor.alarm_clock_time.state }}'
+  tasker_message: 'curl -X GET https://autoremotejoaomgcd.appspot.com/sendmessage?key={{ key }}&sender={{ sender }}&message={{ message }}'
+  tasker_notify: 'curl -X GET https://autoremotejoaomgcd.appspot.com/sendnotification?key={{ key }}&title={{ title }}&text={{ message }}' 

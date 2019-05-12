@@ -1,0 +1,6 @@
+platform: template
+sensors:
+  clouds:
+    friendly_name: Bewolking
+    unit_of_measurement: "%"
+    value_template: '{{ states.sensor.dark_sky_cloud_coverage.state }}'

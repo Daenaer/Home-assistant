@@ -1,0 +1,246 @@
+ #########################################################################
+# Network
+#
+#  Monitor the local network.
+#########################################################################
+
+#homeassistant:
+  #customize:
+    # Device Trackers
+    #device_tracker.bragi:
+      #hidden: true
+    #sensor.bragi:
+      #entity_picture: /local/nas.png
+    #device_tracker.thor:
+      #hidden: true
+    #sensor.thor:
+      #icon: mdi:nas
+      ##entity_picture: /local/nas.png
+    #device_tracker.tplink:
+      #hidden: true
+    ##sensor.tplink:
+      ##entity_picture: /local/nas.png
+    #device_tracker.fritzbox:
+      #hidden: true
+    #sensor.fritz_netmonitor:
+      #entity_picture: /local/fritz.jpg
+      #friendly_name: Fritz.box
+    #device_tracker.fritzrepeater:
+      #hidden: true
+    #sensor.fritzrepeater:
+      #entity_picture: /local/fritzwlan.png
+    #device_tracker.wii:
+       #hidden: true
+    #sensor.wii:
+      #icon: mdi:wii
+      ##entity_picture: /local/nas.png
+    #device_tracker.hpprinter:
+      #hidden: true
+    #sensor.hpprinter:
+      #icon: mdi:printer
+    #sensor.milight:
+      #icon: mdi:lightbulb-on
+      
+    # pi_hole  
+    #sensor.pi_hole_ads_blocked_today:
+      #friendly_name: Ads geblokeerd
+    #sensor.pi_hole_dns_queries_today:
+      #friendly_name: Verzoeken
+    #sensor.pi_hole_ads_percentage_blocked_today:
+      #friendly_name: Percentage geblokeerd
+    #sensor.pi_hole_dns_queries_cached:
+      #friendly_name: verzoeken gecached     
+    #sensor.pi_hole_dns_queries_forwarded:
+      #friendly_name: Verzoeken doorgestuurd
+    #sensor.pi_hole_dns_unique_clients:
+      #friendly_name: Unieke clienten
+    #sensor.pi_hole_dns_unique_domains:
+      #friendly_name: Unieke domeinen
+    #switch.pi_hole:
+      #friendly_name: Pi-Hole
+      #entity_picture: /local/pihole.jpeg
+    
+    # Speedtest
+    #sensor.speedtest_download:
+      #icon: mdi:download
+      #friendly_name: Download
+    #sensor.speedtest_upload:
+      #icon: mdi:upload
+      #friendly_name: Upload
+    #sensor.speedtest_ping:
+      #icon: mdi:timer
+      #friendly_name: Ping
+      
+      
+#switch:
+  #- platform: command_line
+    #switches:
+      #pihole:
+        #command_on: !secret pihole_on
+        #command_off: !secret pihole_off
+        #command_state: !secret pihole_state
+        #value_template: "{{ value_json.status == 'enabled' }}"
+
+
+#sensor:
+  #- platform: fritzbox_netmonitor
+    #host: 192.168.178.1
+
+  #- platform: synologydsm
+  #  host: 192.168.178.250
+  #  username: !secret dsm_user
+  #  password: !secret dsm_pass
+  #  monitored_conditions:
+  #    - cpu_total_load
+  #    - memory_real_usage
+  #    - network_up  
+
+
+    
+  #- platform: pi_hole
+    #host: thor
+    #monitored_conditions:
+      #- ads_blocked_today
+      #- ads_percentage_today
+      #- dns_queries_today
+      #- domains_being_blocked
+      #- queries_cached
+      #- queries_forwarded
+      #- unique_clients
+      #- unique_domains
+
+  #- platform: sonarr
+    #api_key: !secret sonarr_api_key
+    #host: 192.168.178.250
+    #port: 8989
+    #monitored_conditions:
+      #- 'series'
+      #- 'upcoming'
+      #- 'wanted'
+      #- 'queue'
+      #- 'commands'
+      #- 'diskspace'
+      
+  #- platform: radarr
+    #api_key: !secret radarr_api_key
+    #host: 192.168.178.250
+    #port: 7878
+    #monitored_conditions:
+      #- 'movies'
+      #- 'upcoming'
+      ## - 'wanted'
+      ## - 'queue'
+      #- 'commands'
+      #- 'diskspace'
+      #- 'status'
+
+  #- platform: haveibeenpwned
+  #  email: 
+  #    - zanbee@gmail.com
+  #    - m.vrauwdeunt@openmailbox.org
+  #    - m.vrauwdeunt@openmailbox.nl
+  #    - thoniarietdijk@hotmail.com
+      
+  #- platform: template
+    #sensors:
+      #bragi:
+        #friendly_name: "Bragi"
+        #value_template: >-
+          #{% if is_state('device_tracker.bragi', 'home') %}
+            #Online
+          #{% else %}
+            #Offline
+          #{% endif %}
+
+      #thor:
+        #friendly_name: "Thor"
+        #value_template: >-
+          #{% if is_state('device_tracker.thor', 'home') %}
+            #Online
+          #{% else %}
+            #Offline
+          #{% endif %}
+
+      #tplink:
+        #friendly_name: "TP-Link"
+        #value_template: >-
+          #{% if is_state('device_tracker.tplink', 'home') %}
+            #Online
+          #{% else %}
+            #Offline
+          #{% endif %}
+      #odin:
+        #friendly_name: "Odin"
+        #value_template: >-
+          #{% if is_state('device_tracker.odin', 'home') %}
+            #Online
+          #{% else %}
+            #Offline
+          #{% endif %}
+      ##fritz_netmonitor:
+      ##  friendly_name: "Fritz.box"
+      ##  value_template: >-
+      ##    {% if is_state('sensor.fritz_netmonitor', 'online') %}
+      ##      Online
+      ##    {% else %}
+      ##      Offline
+      ##    {% endif %}
+        
+      #fritzrepeater:
+        #friendly_name: "Fritz.repeater"
+        #value_template: >-
+          #{% if is_state('device_tracker.fritzrepeater', 'home') %}
+            #Online
+          #{% else %}
+            #Offline
+          #{% endif %}
+    
+      #wii:
+        #friendly_name: "Wii"
+        #value_template: >-
+          #{% if is_state('device_tracker.wii', 'home') %}
+            #Online
+          #{% else %}
+            #Offline
+          #{% endif %}
+        
+      #hpprinter:
+        #friendly_name: "HP Printer"
+        #value_template: >-
+          #{% if is_state('device_tracker.hpprinter', 'home') %}
+            #Online
+          #{% else %}
+            #Offline
+          #{% endif %}
+
+      #milight:
+        #friendly_name: "MI Light MQTT hub"
+        #value_template: >-
+          #{% if is_state('device_tracker.milight', 'home') %}
+            #Online
+          #{% else %}
+            #Offline
+          #{% endif %}
+      #tvslaapkamer:
+        #friendly_name: "TV Slaapkamer"
+        #value_template: >-
+          #{% if is_state('device_tracker.TV7833', 'home') %}
+            #Online
+          #{% else %}
+            #Offline
+          #{% endif %}
+      #eettafel:
+        #friendly_name: "Eettafel"
+        #value_template: >-
+          #{% if is_state('device_tracker.eettafel6864', 'home') %}
+            #Online
+          #{% else %}
+            #Offline
+          #{% endif %}
+      #baldr:
+        #friendly_name: Kodi (Woonkamer)
+        #value_template: '{{ states("media_player.baldr") }}'
+      #freya:
+        #friendly_name: Kodi (Slaapkamer)
+        #value_template: '{{ states("media_player.freya") }}'
+  

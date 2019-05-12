@@ -1,0 +1,14 @@
+platform: template
+sensors:
+  # Calculate how many packages were delivered today.
+  deliveries_today:
+    friendly_name: "Today's Deliveries"
+    value_template: >
+      {% macro delivered(sensor) %}
+        {% if 'delivered' in sensor.attributes %}
+          {{sensor.attributes.delivered}}
+        {% else %}
+           0
+        {% endif %}
+      {% endmacro %}
+      {{delivered(states.sensor.postnl)}}

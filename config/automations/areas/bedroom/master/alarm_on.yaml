@@ -1,0 +1,17 @@
+# Turn on the alarm clock via MQTT and send it to my phone
+alias: alarm on
+initial_state: 'on'
+trigger: 
+  platform: mqtt
+  topic: home/alarm/set
+  payload: 'ON'
+action:
+  - service: mqtt.publish
+    data:
+      topic: home/alarm/state
+      payload: "ON"
+  - service: shell_command.tasker_alarm
+    data:
+      key: !secret tasker_key
+      sender: !secret tasker_sender
+      status: "On"

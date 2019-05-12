@@ -1,0 +1,9 @@
+# Switch indicating vacation.
+platform: mqtt
+name: "Vacation"
+state_topic: "home/vacation"
+command_topic: "home/vacation"
+qos: 1
+payload_on: "yes"
+payload_off: "no"
+retain: true 

@@ -1,0 +1,6 @@
+platform: wake_on_lan
+mac_address: !secret odin_mac_address
+name: 'Desktop Odin'
+host: !secret odin_ip_address
+turn_off:
+  service: shell_command.turn_off_odin 

@@ -1,0 +1,21 @@
+platform: template
+sensors:
+  # Calculate how many packages are in transit (anything not yet delivered).
+  packages_in_transit:
+    friendly_name: "Packages in Transit"
+    value_template: >
+      {% macro in_transit(sensor) %}
+        {% if sensor %}
+          {{sensor.state|int - delivered(sensor)|int}}
+        {% else %}
+          0
+        {% endif %}
+      {% endmacro %}
+      {% macro delivered(sensor) %}
+        {% if 'delivered' in sensor.attributes %}
+          {{sensor.attributes.delivered}}
+        {% else %}
+           0
+        {% endif %}
+      {% endmacro %}
+      {{in_transit(states.sensor.postnl)|int}}

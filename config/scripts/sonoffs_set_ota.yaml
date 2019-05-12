@@ -1,0 +1,8 @@
+sonoffs_set_ota:
+  alias: "Set Sonoff OTA Url"
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/sonoffs/OtaUrl"
+        payload: 'http://sonoff.maddox.co.uk/tasmota/sonoff-classic.bin'
+                  #linkt altijd naar laatste versie van bestand

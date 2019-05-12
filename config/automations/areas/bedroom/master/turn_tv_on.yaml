@@ -1,0 +1,13 @@
+alias: turn on TV slaapkamer
+initial_state: 'on'
+trigger:
+  platform: state
+  entity_id: media_player.freya
+  to: 'idle'
+  for:
+    seconds: 5
+  
+action:
+  - service: switch.turn_on
+    data:
+      entity_id: switch.tv_slaapkamer

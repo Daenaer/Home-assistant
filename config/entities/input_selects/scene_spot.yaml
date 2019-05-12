@@ -1,0 +1,8 @@
+scene_spot:
+  name: Scene
+  options:
+    - '-'
+    - Avond
+    - Lezen
+    - Energie
+  initial: '-'

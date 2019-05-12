@@ -1,0 +1,8 @@
+# query de huidige firmware:
+sonoffs_query_fw:
+  alias: "Query Sonoff FW version"
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/sonoffs/status"
+        payload: '2'

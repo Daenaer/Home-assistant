@@ -1,0 +1,8 @@
+platform: mqtt
+name: "Guests"
+state_topic: "home/guests"
+command_topic: "home/guests"
+qos: 1
+payload_on: "yes"
+payload_off: "no"
+retain: true 

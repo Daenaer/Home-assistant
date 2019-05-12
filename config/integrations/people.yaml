@@ -1,0 +1,376 @@
+#########################################################################
+# People
+#
+#  People exist in various states. Keep track of these and act
+#  accordingly.
+#
+#  - Sleeping: This state is used daily and is critical. First, when
+#              sleep mode is enabled, TTS briefings, door chimes, and
+#              and various other potential disturbances are disabled.
+#              Secondly, the house is placed in a convenient state for
+#              sleeping occupants.
+#  - Guests: Having guests means accomodating untracked people. Don't
+#            rely on tracked people to control temperature, lights, etc.
+#            Guests are quickly annoyed by home automation that doesn't
+#            take their presence into account.
+#  - Vacation: When no one is home for an extended period, don't bother
+#              changing states.
+#########################################################################
+
+#homeassistant:
+  #customize:
+    #switch.sleeping:
+      #icon: mdi:sleep
+      #friendly_name: "Slapen"
+      ##emulated_hue_hidden: false
+      ##emulated_hue_name: Sleep Mode
+    #switch.vacation:
+      #icon: mdi:airplane
+      #friendly_name: "Vakantie"
+    #switch.guests:
+      #icon: mdi:human-male-female
+      #friendly_name: "Gasten"
+      ##emulated_hue_hidden: false
+      ##emulated_hue_name: Guest Mode
+    #group.tracked_people:
+      #icon: mdi:human-male-female
+
+#group:
+  # People states.
+  #People:
+    #- device_tracker.michel
+    #- device_tracker.thonia
+    #- device_tracker.zoe
+  # Tracked people (subset of device_tracker.all_devices).
+  #Tracked People:
+    #- device_tracker.michel
+    #- device_tracker.thonia
+    #- device_tracker.zoe
+    
+#sensor:
+  #- platform: mqtt
+    #state_topic: "owntracks/michel/oneplus6t"
+    #name: "battery Michel"
+    #unit_of_measurement: "%"
+    #value_template: '{{ value_json.batt }}'
+    #device_class: battery
+    
+#switch:
+  ## Switch indicating sleeping.
+  #- platform: mqtt
+    #name: "Sleeping"
+    #state_topic: "home/sleeping"
+    #command_topic: "home/sleeping"
+    #qos: 1
+    #payload_on: "ON"
+    #payload_off: "OFF"
+    #retain: true
+  ## Switch indicating vacation.
+  #- platform: mqtt
+    #name: "Vacation"
+    #state_topic: "home/vacation"
+    #command_topic: "home/vacation"
+    #qos: 1
+    #payload_on: "yes"
+    #payload_off: "no"
+    #retain: true
+  # Switch indicating guests.
+  #- platform: mqtt
+    #name: "Guests"
+    #state_topic: "home/guests"
+    #command_topic: "home/guests"
+    #qos: 1
+    #payload_on: "yes"
+    #payload_off: "no"
+    #retain: true
+  #- platform: command_line
+    #switches:
+      #kodi_party_mode:
+        #command_on:  '/config/asgard/kodiscript/sleepmode_music.sh'
+        #command_off: '/config/asgard/kodiscript/stopsleep.sh'
+
+#automation:
+#  # On vacation, make sure the thermostat is on "away" mode.
+#  - alias: Vacation started
+#    trigger:
+#      platform: state
+#      entity_id: switch.vacation
+#      to: 'on'
+#    action:
+#      - service: climate.set_away_mode
+#        data:
+#          entity_id: climate.thermostat
+#          away_mode: true
+
+  ## When sleeping, play a good night TTS message, turn off
+  ## all lighting, turn on stair nightlight lighting, turn off
+  ## smart sockets, pause media, and lock the front door.
+  ## If any door is open, don't activate.
+  ## If temperature meets a threshold, turn on the bedroom fan.
+  #- alias: Sleeping
+    #initial_state: 'on'
+    #trigger:
+      #- platform: state
+        #entity_id: switch.sleeping
+        #to: 'on'
+##      - platform: mqtt
+##        topic: milight/updates/0x2294/rgb_cct/+
+    #condition:
+      #- condition: state
+        #entity_id: switch.guests
+        #state: 'off'
+##      - condition: state
+##        entity_id: binary_sensor.any_door_open
+##        state: 'off'
+    #action:
+      #- service: shell_command.tasker_message
+        #data:
+          #key: !secret tasker_key
+          #sender: !secret tasker_sender
+          #message: "Sleeping=:=Status=On,Guests=No"
+      ##- service: switch.turn_on
+      ##  data:
+      ##    entity_id: switch.freya
+      #- service: mqtt.publish
+        #data:
+          #topic: milight/0x2294/rgb_cct/1
+          #payload: "{'command':'night_mode'}"
+      #- service: light.turn_off
+        #data:
+          #entity_id: light.ambilight
+      #- service: light.turn_off
+        #data:
+          #entity_id: light.ambilight
+      ##- wait_template: "{{ not is_state('media_player.freya', 'off') }}"
+      ##- service: media_player.play_media
+      ##  data:
+      ##    entity_id: media_player.freya
+      ##    media_content_type: audio/mp4
+      ##  data_template:
+      ##    media_content_id: >
+      ##     {{ ["smb://freya/Music/Nature/Birds/Birds Singing.mp3", "smb://freya/Music/Nature/Birds/Forest and Nature.mp3", "smb://freya/Music/Nature/Birds/Forest Birds Singing.mp3" ] | random }}
+      #- service: switch.turn_off
+        #data:
+          #entity_id: switch.desktop_odin
+      #- delay: 0:10
+      #- service: light.turn_off
+        #data:
+          #entity_id: light.milight_spot
+      #- service: light.turn_off
+        #data:
+          #entity_id: light.milight_bank
+      #- service: light.turn_off
+        #entity_id: group.all_lights
+##      - service: light.turn_on
+##        entity_id: light.stair_lighting
+##        data:
+##          brightness: 10
+##          color_name: red
+##      - service: switch.turn_off
+##        entity_id:
+##          - switch.zwave_switch_1_switch
+##          - switch.zwave_switch_2_switch
+##          - switch.zwave_switch_3_switch
+##          - switch.zwave_switch_4_switch
+##          - switch.zwave_switch_5_switch
+##          - switch.zwave_switch_6_switch
+##          - switch.zwave_switch_7_switch
+##          - switch.smart_socket_1
+##          - switch.smart_socket_2
+##      - service: lock.lock
+##        entity_id: group.all_locks
+##      - condition: numeric_state
+##        entity_id: sensor.dark_sky_temperature
+##        above: 60
+##      - service: fan.turn_on
+##        entity_id: fan.zwave_fan_1_level
+##        data:
+##          speed: 'low'
+
+  # Sleep mode exceptions: If any door is open, alert via TTS and
+  # turn sleep mode off.
+  #- alias: Don't sleep yet
+  #  initial_state: 'on'
+  #  trigger:
+  #    platform: state
+  #    entity_id: switch.sleeping
+  #    to: 'on'
+  #  condition:
+  #    - condition: state
+  #      entity_id: binary_sensor.any_door_open
+  #      state: 'on'
+  #  action:
+  #    - service: switch.turn_off
+  #      entity_id: switch.sleeping
+  #    - service: script.turn_on
+  #      entity_id: script.play_tts
+  #      data_template:
+  #        variables:
+  #          message: >
+  #            {% set doors = ["door_one", "door_two", "door_three", "door_four", "door_five"] %}
+  #            {% for door in doors %}
+  #              {% if states.binary_sensor[door].state == 'on' -%}
+  #                The {{states.binary_sensor[door].attributes.friendly_name.lower()}} is open and must be closed.
+  #              {%- endif -%}
+  #            {% endfor %}
+  # Sleep mode isn't always manually turned off in the morning.
+  # Just turn it off automatically.
+  #- alias: Turn off sleep mode automatically
+    #initial_state: 'on'
+    #trigger:
+      #platform: time
+      #at: '10:00:00'
+    #condition:
+    #- condition: state
+      #entity_id: switch.sleeping
+      #state: 'on'
+    #action:
+      #service: homeassistant.turn_off
+      #data:
+        #entity_id: switch.sleeping
+        
+  #- alias: Turn off sleep mode when alarm goes
+    #initial_state: 'on'
+    #trigger:
+      #platform: template
+      #value_template: '{{ states.sensor.time.state == states.sensor.alarm_clock_time.state }}'
+    #condition:
+    #- condition: state
+      #entity_id: switch.sleeping
+      #state: 'on'
+    #action:
+      #service: homeassistant.turn_off
+      #data:
+        #entity_id: switch.sleeping
+        
+  #- alias: Stop the Birds
+    #initial_state: 'on'
+    #trigger:  
+      #platform: state
+      #entity_id: switch.sleeping
+      #to: 'on'
+      #for:
+        #hours: 1
+        #minutes: 30
+    #action:
+      #- service: media_player.media_stop
+        #data:
+          #entity_id: media_player.freya
+      #- service: media_player.turn_off
+        #data:
+          #entity_id: media_player.freya
+  # Sometimes we want to turn on sleep mode without TTS,
+  # especially if it isn't on, but someone is already sleeping.
+  # It can be activated by double-tapping off the bedroom
+  #  light switch.
+  #- alias: Silent sleep mode
+  #  initial_state: 'on'  
+  #  trigger:
+  #    - event_type: zwave.scene_activated
+  #      platform: event
+  #      event_data:
+  #        entity_id: zwave.zwave_dimmer_2
+  #        scene_id: 2
+  #        scene_data: 3
+  #  action:
+  #    - service: light.turn_off
+  #      entity_id: group.all_lights
+  #    - service: light.turn_on
+  #      entity_id: light.stair_lighting
+  #      data:
+  #        brightness: 10
+  #        color_name: red
+  #    - service: switch.turn_off
+  #      entity_id:
+  #        - switch.zwave_switch_1_switch
+  #        - switch.zwave_switch_2_switch
+  #        - switch.zwave_switch_3_switch
+  #        - switch.zwave_switch_4_switch
+  #        - switch.zwave_switch_5_switch
+  #        - switch.zwave_switch_6_switch
+  #        - switch.zwave_switch_7_switch
+  #        - switch.smart_socket_1
+  #        - switch.smart_socket_2
+
+
+  ## If no one has been home for 24 hours, automatically
+  ## enable vacation mode.
+  #- alias: automatic vacation mode
+    #initial_state: 'on'
+    #trigger:
+      #- platform: state
+        #entity_id: group.tracked_people
+        #to: not_home
+        #for:
+          #hours: 24
+    #action:
+      #- service: switch.turn_on
+        #entity_id: switch.vacation
+
+  ## Turn off vacation mode as soon as anyone gets home.
+  #- alias: turn off vacation mode
+    #initial_state: 'on'
+    #trigger:
+      #- platform: state
+        #entity_id: group.tracked_people
+        #to: home
+    #action:
+      #- service: switch.turn_off
+        #entity_id: switch.vacation
+        
+  #- alias: Iedereen weg
+    #initial_state: 'on'
+    #trigger:
+      #- platform: state
+        #entity_id: group.tracked_people
+        #to: not_home
+    #action:
+      #- service: switch.turn_off
+        #data:
+          #entity_id: switch
+      #- service: shell_command.tasker_notify
+        #data:
+          #key: !secret tasker_key
+          #sender: !secret tasker_sender
+          #title: "Iedereen is weg"
+          #message: "Er is niemand thuis"
+
+  #- alias: Sleeping Guests
+    #initial_state: 'on'
+    #trigger:
+      #- platform: state
+        #entity_id: switch.sleeping
+        #to: 'on'
+##      - platform: mqtt
+##        topic: milight/updates/0x2294/rgb_cct/+
+    #condition:
+      #- condition: state
+        #entity_id: switch.guests
+        #state: 'on'
+##      - condition: state
+##        entity_id: binary_sensor.any_door_open
+##        state: 'off'
+    #action:
+      #- service: shell_command.tasker_sleep
+        #data:
+          #key: !secret tasker_key
+          #sender: !secret tasker_sender
+          #status: "ON"
+          #guests: "ON"
+      #- service: mqtt.publish
+        #data:
+          #topic: milight/0x2294/rgb_cct/1
+          #payload: "{'command':'night_mode'}"
+      #- service: light.turn_off
+        #data:
+          #entity_id: light.ambilight
+      #- service: light.turn_off
+        #data:
+          #entity_id: light.ambilight
+      #- delay: 0:10
+      #- service: light.turn_off
+        #data:
+          #entity_id: light.milight_spot
+      #- service: light.turn_off
+        #data:
+          #entity_id: light.milight_bank
