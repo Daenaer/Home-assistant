@@ -10,4 +10,4 @@ Here's my [Home Assistant[(https://home-assistant.io/) configuration. I run Home
 
 I am currently running a Barebone [Xpenology](https://xpenology.org/) and used the [Docker](https://www.home-assistant.io/docs/installation/docker/) approach to install Home Assistant.
 
-I regularly update my configuration files. You can check my current HA version [here[(.HA_VERSION). If you like anything here, Be sure to :star2: my repo!
+I regularly update my configuration files. You can check my current HA version [here](.HA_VERSION). If you like anything here, Be sure to :star2: my repo!
